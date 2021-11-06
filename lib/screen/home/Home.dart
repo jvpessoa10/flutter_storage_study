@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistence_example/data/FileProfileDataSource.dart';
+import 'package:persistence_example/data/HttpProfileDataSource.dart';
+import 'package:persistence_example/data/KeyValueProfileDataSource.dart';
 import 'package:persistence_example/data/ProfileDataSource.dart';
+import 'package:persistence_example/data/SQLiteProfileDataSource.dart';
 import 'package:persistence_example/model/Profile.dart';
 import 'package:persistence_example/repository/ProfileRepository.dart';
 
@@ -18,7 +21,7 @@ class _HomeState extends State<Home> {
 
   Profile? profile;
 
-  final ProfileRepository repo = ProfileRepositoryImpl(ProfileDataSourceImpl());
+  final ProfileRepository repo = ProfileRepositoryImpl(HttpProfileDataSource());
 
   @override
   void initState() {
@@ -30,7 +33,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Meu perfil "),
+          title: Text("Meu perfil"),
         ),
         body: Column(
           children: <Widget>[
